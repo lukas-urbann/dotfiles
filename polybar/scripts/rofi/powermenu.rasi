@@ -25,9 +25,9 @@ window {
     transparency:                   "real";
     background-color:               @bg;
     text-color:                     @fg;
-	border:							0px;
-	border-color:					@ac;
-    border-radius:                  0px;
+	border:							1px;
+	border-color:					@bg1;
+    border-radius:                  8px;
 	width:							300px;
     location:                       center;
     x-offset:                       0;
@@ -76,10 +76,10 @@ inputbar {
 
 listview {
     background-color:               @al;
-    padding:                        0px;
-    columns:                        1;
-    lines:                          5;
-    spacing:                        5px;
+    padding:                        12px;
+    columns:                        5;
+    lines:                          1;
+    spacing:                        1px;
     cycle:                          true;
     dynamic:                        true;
     layout:                         vertical;
@@ -100,12 +100,16 @@ element {
     text-color:                     @fg;
     orientation:                    horizontal;
     border-radius:                  0px;
-    padding:                        6px 6px 6px -16px;
+    padding:                        12px;
+    margin: 0px;
 }
 
+
 element-icon {
-    size:                           24px;
+    size:                           4px;
     border:                         0px;
+    background-color:  @al;
+    text-color: inherit;
 }
 
 element-text {
@@ -113,12 +117,17 @@ element-text {
     horizontal-align:               0;
     vertical-align:                 0.5;
     margin:                         0px 2.5px 0px 2.5px;
+    background-color:  @al;
+    text-color: inherit;
 }
 
 element selected {
     background-color:               @bg3;
-    text-color:                     @bg;
+    text-color:                     @fg;
 	border:							0px;
-    border-radius:                  0px;
+    border-radius:                  8px;
     border-color:                  	@bg;
+    
+    background-color:  @bg4;
+    text-color: inherit;
 }

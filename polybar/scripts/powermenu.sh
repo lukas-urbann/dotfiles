@@ -5,11 +5,11 @@ uptime=$(uptime -p | sed -e 's/up //g')
 rofi_command="rofi -theme $dir/powermenu.rasi"
 
 # Options
-shutdown=" Shutdown"
-reboot=" Restart"
-lock=" Lock"
-suspend=" Sleep"
-logout=" Logout"
+shutdown=""
+reboot=""
+lock=""
+suspend=""
+logout=""
 
 # Confirmation
 confirm_exit() {
@@ -33,7 +33,7 @@ case $chosen in
     $shutdown)
 		ans=$(confirm_exit &)
 		if [[ $ans == "yes" || $ans == "YES" || $ans == "y" || $ans == "Y" ]]; then
-			systemctl poweroff
+			loginctl poweroff
 		elif [[ $ans == "no" || $ans == "NO" || $ans == "n" || $ans == "N" ]]; then
 			exit 0
         else
@@ -43,7 +43,7 @@ case $chosen in
     $reboot)
 		ans=$(confirm_exit &)
 		if [[ $ans == "yes" || $ans == "YES" || $ans == "y" || $ans == "Y" ]]; then
-			systemctl reboot
+			loginctl reboot
 		elif [[ $ans == "no" || $ans == "NO" || $ans == "n" || $ans == "N" ]]; then
 			exit 0
         else
@@ -51,10 +51,10 @@ case $chosen in
         fi
         ;;
     $lock)
-		if [[ -f /usr/bin/i3lock ]]; then
-			i3lock
-		elif [[ -f /usr/bin/betterlockscreen ]]; then
+		if [[ -f /usr/bin/betterlockscreen ]]; then
 			betterlockscreen -l
+		elif [[ -f /usr/bin/i3lock ]]; then
+			i3lock
 		fi
         ;;
     $suspend)

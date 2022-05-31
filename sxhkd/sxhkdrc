@@ -1,22 +1,53 @@
-#
-# wm independent hotkeys
-#
-
 # terminal emulator
 super + Return
 	alacritty
 
 # program launcher
 super + @space
-	rofi -show run
+	rofi -no-config -no-lazy-grab -show drun -modi drun -theme ~/.config/polybar/scripts/rofi/launcher.rasi
 
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
 
-#
-# bspwm hotkeys
-#
+### CUSTOM ###
+super + shift + s
+	flameshot gui
+
+XF86MonBrightnessDown
+	backlight_control -5 
+
+XF86MonBrightnessUp
+	backlight_control +5
+
+XF86AudioMute
+	amixer -q sset Master toggle
+
+XF86AudioLowerVolume
+	amixer -q sset Master 3%-
+
+XF86AudioRaiseVolume
+	amixer -q sset Master 3%+
+
+control + alt + l
+	betterlockscreen -l
+
+XF86AudioPlay
+	playerctl play-pause
+
+XF86AudioStop
+	playerctl stop
+
+XF86AudioPrev
+	playerctl previous
+
+XF86AudioNext
+	playerctl next
+
+XF86AudioMicMute
+	pavucontrol
+
+### BSPWM ###
 
 # quit/restart bspwm
 super + alt + {q,r}
@@ -80,10 +111,18 @@ super + {o,i}
 	bspc node {older,newer} -f; \
 	bspc wm -h on
 
-# focus or send to the given desktop
-super + {_,shift + }{1-9,0}
-	bspc {desktop -f,node -d} '^{1-9,10}'
+# focus or send to the given desktop (NOT WORKING)
+#super + {alt,shift}+{1-9,0}
+#	bspc {desktop -f,node -d} '^{1-9,10}'
 
+super + {plus,ecaron,scaron,ccaron,rcaron,zcaron,yacute,aacute,iacute,eacute}
+	bspc desktop -f {1-9,10}
+
+super + shift + {plus,ecaron,scaron,ccaron,rcaron,zcaron,yacute,aacute,iacute,eacute}
+	bspc node -d {1-9,10}
+
+super + control + {plus,ecaron,scaron,ccaron,rcaron,zcaron,yacute,aacute,iacute,eacute}
+	id=$(bspc query -N -n); bspc node -d ^{1-9}; bspc node -f ${id}
 #
 # preselect
 #

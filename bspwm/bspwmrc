@@ -1,14 +1,22 @@
-#! /bin/sh
+#!/bin/sh
 
 pgrep -x sxhkd > /dev/null || sxhkd &
+
+#set shell that sxhkd uses to execute commands:
+#export SXHKD_SHELL=/usr/bin/bash
+
+#start bspwm and sxhkd
+#sxhkd -f 100 -c /home/$USER/.config/sxhkd/sxhkdrc &
 
 polybar &
 nitrogen --restore
 picom &
 dunst &
 lxpolkit &
+/usr/lib/geoclue-2.0/demos/agent &
+tlp start
 
-bspc monitor -d 1 2 3 4 5 6 7 8 9
+bspc monitor -d 1 2 3 4 5 6 7 8 9 10
 
 bspc config border_width         2
 bspc config window_gap           12
