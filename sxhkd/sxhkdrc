@@ -12,7 +12,7 @@ super + Escape
 
 ### CUSTOM ###
 super + shift + s
-	flameshot gui
+	flameshot gui -s -c
 
 XF86MonBrightnessDown
 	backlight_control -5 

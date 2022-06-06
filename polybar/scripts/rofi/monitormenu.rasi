@@ -12,15 +12,15 @@ configuration {
 window {
     transparency:                   "real";
     border-radius:                  0px;
-    height:                         22.45%;
-    width:                          8%;
-    location:                       northeast;
-    x-offset:                       -12;
-    y-offset:                       56;
+    height:                         25.9%;
+    width:                          16%;
+    location:                       center;
+    x-offset:                       0;
+    y-offset:                       0;
 }
 
 listview {
-    background-color:               @black;
+    background-color:               @darkest-black;
     margin:                         0% 0% 0% 0%;
     spacing:                        0%;
     cycle:                          true;

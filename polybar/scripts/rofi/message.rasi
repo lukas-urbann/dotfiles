@@ -3,8 +3,8 @@
 @import "colors.rasi"
 
 * {
-    background-color:       @bg;
-    text-color:             @fg;
+    background-color:       @black;
+    text-color:             @white;
 	font:				 	"Fantasque Sans Mono 10";
 }
 
@@ -13,12 +13,12 @@ window {
     padding:    			25px;
     border:					1px;
     border-radius:          8px;
-    border-color:           @bg1;
+    border-color:           @red;
     location:               center;
     y-offset:               -2em;
 }
 
 entry {
     expand: 				true;
-    text-color:				@bg2;
+    text-color:				@white;
 }

@@ -5,18 +5,19 @@ uptime=$(uptime -p | sed -e 's/up //g')
 rofi_command="rofi -theme $dir/powermenu.rasi"
 
 # Options
-shutdown=""
-reboot=""
-lock=""
-suspend=""
-logout=""
+shutdown=" Shutdown"
+reboot=" Reboot"
+lock=" Lock"
+suspend=" A mimir"
+hibernate=" Hibernate"
+logout=" Log Out"
 
 # Confirmation
 confirm_exit() {
 	rofi -dmenu\
 		-i\
 		-no-fixed-num-lines\
-		-p "Are You Sure? : "\
+		-p "U sure m8? : "\
 		-theme $dir/confirm.rasi
 }
 
@@ -26,7 +27,7 @@ msg() {
 }
 
 # Variable passed to rofi
-options="$lock\n$suspend\n$logout\n$reboot\n$shutdown"
+options="$lock\n$suspend\n$hibernate\n$logout\n$reboot\n$shutdown"
 
 chosen="$(echo -e "$options" | $rofi_command -p "Uptime: $uptime" -dmenu -selected-row 0)"
 case $chosen in
@@ -62,7 +63,19 @@ case $chosen in
 		if [[ $ans == "yes" || $ans == "YES" || $ans == "y" || $ans == "Y" ]]; then
 			mpc -q pause
 			amixer set Master mute
-			systemctl suspend
+			loginctl suspend
+		elif [[ $ans == "no" || $ans == "NO" || $ans == "n" || $ans == "N" ]]; then
+			exit 0
+        else
+			msg
+        fi
+        ;;
+	$hibernate)
+		ans=$(confirm_exit &)
+		if [[ $ans == "yes" || $ans == "YES" || $ans == "y" || $ans == "Y" ]]; then
+			mpc -q pause
+			amixer set Master mute
+			loginctl hibernate
 		elif [[ $ans == "no" || $ans == "NO" || $ans == "n" || $ans == "N" ]]; then
 			exit 0
         else
