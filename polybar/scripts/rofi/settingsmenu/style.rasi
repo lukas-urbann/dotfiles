@@ -12,11 +12,11 @@ configuration {
 window {
     transparency:                   "real";
     border-radius:                  0px;
-    height:                         25.9%;
-    width:                          16%;
-    location:                       center;
-    x-offset:                       0;
-    y-offset:                       0;
+    height:                         30%;
+    width:                          20%;
+    location:                       northeast;
+    x-offset:                       -3.5%;
+    y-offset:                       56px;
 }
 
 listview {
@@ -65,7 +65,7 @@ element alternate.active {
 
 element selected {
     background-color:               @blue;
-    text-color:                     @white;
+    text-color:                     @black;
     border-radius:                  8px;
 }
 

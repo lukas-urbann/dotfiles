@@ -1,0 +1,9 @@
+/* colors */
+
+* {
+  red: #f73d3d;
+  black: #1f1f1f;
+  white: #ccc;    
+  blue: #5486e3;
+  darkest-black: #0d0d0d;
+}

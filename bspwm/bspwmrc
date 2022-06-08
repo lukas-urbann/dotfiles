@@ -8,7 +8,10 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 #start bspwm and sxhkd
 #sxhkd -f 100 -c /home/$USER/.config/sxhkd/sxhkdrc &
 
-polybar &
+pgrep -x pipewire > /dev/null || pipewire &
+pgrep -x pipewire-pulse > /dev/null || pipewire-pulse &
+pgrep -x wireplumber > /dev/null || wireplumber &
+pgrep -x polybar > /dev/null || polybar &
 nitrogen --restore
 picom &
 dunst &
